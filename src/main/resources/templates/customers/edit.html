@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/base}">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers/Clients</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-box">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <h4 class="m-t-0 m-b-60 header-title align-center">SAVE CUSTOMER INFORMATION</h4>
+                        <hr style="margin-top: 30px; margin-bottom: 30px">
+                        <form role="form" th:action="@{/customers/{id}(id=${customer.id})}"  th:object="${customer}" method="post">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <input type="hidden" class="form-control"  th:field="*{id}" disabled>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="hidden" class="form-control"  th:field="*{secretCode}">
+                                    <small class="form-text text-danger"
+                                           th:if="${#fields.hasErrors('secretCode')}" th:errors="*{secretCode}"
+                                    ></small>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>First name</label>
+                                    <input type="text" class="form-control" placeholder="Enter first name" th:field="*{firstName}">
+                                    <small class="form-text text-danger"
+                                           th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+                                    ></small>
+                                    <small class="form-text text-muted">Enter customer first name.</small>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Last name</label>
+                                    <input type="text" class="form-control" placeholder="Enter last name" th:field="*{lastName}">
+                                    <small class="form-text text-danger"
+                                           th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                                    ></small>
+                                    <small class="form-text text-muted">Enter customer last name</small>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Telephone</label>
+                                    <input type="text" class="form-control" placeholder="Enter telephone" th:field="*{telephone}">
+                                    <small class="form-text text-danger"
+                                           th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}"
+                                    ></small>
+                                    <small class="form-text text-muted">Enter customer phone number</small>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Date of birth</label>
+                                    <input type="text" class="form-control" placeholder data-mask="99/99/9999" th:field="*{dateOfBirth}">
+                                    <small class="form-text text-danger"
+                                           th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"
+                                    ></small>
+                                    <small class="form-text text-muted">Enter customer date of birth in format dd/mm/yyyy</small>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Plate number</label>
+                                    <input type="text" class="form-control" placeholder="Enter plate number" th:field="*{plateNumber}">
+                                    <small class="form-text text-danger"
+                                           th:if="${#fields.hasErrors('plateNumber')}" th:errors="*{plateNumber}"
+                                    ></small>
+                                    <small class="form-text text-muted">Enter plate number of the customer motorcycle or vehicle</small>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>District</label>
+                                    <select class="custom-select" name="districtId">
+<!--                                        <option th:value="*{customer.district.id}"-->
+<!--                                                th:text="*{customer.district.name}"></option>-->
+                                        <option
+                                                th:each="district: ${districts}"
+                                                th:value="${district.id}"
+                                                th:text="${district.name}">
+                                        </option>
+                                    </select>
+                                    <small class="form-text text-muted">Select a customer district</small>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Stage</label>
+                                    <select class="custom-select" name="stageId">
+<!--                                        <option th:value="*{customer.stage.id}"-->
+<!--                                                th:text="*{customer.stage.name}"/>-->
+                                        <option
+                                                th:each="stage: ${stages}"
+                                                th:value="${stage.id}"
+                                                th:text="${stage.name}">
+                                        </option>
+                                    </select>
+                                    <small class="form-text text-muted">Select a customer operation stage</small>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Fuel station</label>
+                                    <select class="custom-select" name="stationId">
+<!--                                        <option th:value="*{customer.fuelStation.id}"-->
+<!--                                        th:text="*{customer.fuelStation.name}"/>-->
+                                        <option
+                                                th:each="station: ${stations}"
+                                                th:value="${station.id}"
+                                                th:text="${station.name}">
+                                        </option>
+                                    </select>
+                                    <small class="form-text text-muted">Attach customer to fuel station</small>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save customer detail</button>
+                        </form>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+            </div>
+        </div>
+        <!-- end col -->
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/base}">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-box">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <h4 class="m-t-0 m-b-60 header-title align-center">SAVE USER INFORMATION</h4>
+                        <hr style="margin-top: 30px; margin-bottom: 30px">
+                        <form role="form">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>First name</label>
+                                    <input type="text" class="form-control" placeholder="Enter first name">
+                                    <small class="form-text text-muted">Enter user first name.</small>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Last name</label>
+                                    <input type="text" class="form-control" placeholder="Enter last name">
+                                    <small class="form-text text-muted">Enter user last name</small>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Telephone</label>
+                                    <input type="text" class="form-control" aria-describedby="emailHelp"
+                                           placeholder="Enter telephone">
+                                    <small class="form-text text-muted">Enter user phone number</small>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Password</label>
+                                    <input type="text" class="form-control" aria-describedby="emailHelp"
+                                           placeholder="Enter a temporary password">
+                                    <small class="form-text text-muted">Enter a temporary password for the user</small>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>District</label>
+                                    <input type="text" class="form-control" placeholder="Select customer district">
+                                    <small class="form-text text-muted">Select a customer district</small>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Fuel station</label>
+                                    <input type="text" class="form-control" placeholder="Select customer fuel station">
+                                    <small class="form-text text-muted">Attach user to fuel station</small>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Save customer detail</button>
+                        </form>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+            </div>
+        </div>
+        <!-- end col -->
+    </div>
+</div>
+</body>
+</html>

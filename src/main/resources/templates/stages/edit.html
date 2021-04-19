@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/base}" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Stage</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-box">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <h4 class="m-t-0 m-b-60 header-title align-center">CREATE CUSTOMER STAGE INFORMATION</h4>
+                        <hr style="margin-top: 30px; margin-bottom: 30px">
+                        <form role="form" th:action="@{/stages/{id}(id=${stage.id})}" th:object="${stage}" method="post">
+                            <div class="form-group">
+                                <label>Stage name</label>
+                                <input type="text" class="form-control" placeholder="Enter stage name" th:field="*{name}">
+                                <small class="form-text text-danger"
+                                       th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
+                                <small class="form-text text-muted">Enter the name of the stage.</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Chairperson</label>
+                                <input type="text" class="form-control"   placeholder="Chairperson's name" th:field="*{chairperson}">
+                                <small class="form-text text-danger"
+                                       th:if="${#fields.hasErrors('chairperson')}" th:errors="*{chairperson}"></small>
+                                <small class="form-text text-muted">Enter the name of the stage chairperson</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" class="form-control" placeholder="Stage address" th:field="*{address}">
+                                <small class="form-text text-danger"
+                                       th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></small>
+                                <small class="form-text text-muted">Enter the location address of the stage</small>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">Districts</label>
+                                <select class="custom-select" name="districtId">
+                                    <option th:value="${stage.district.id}" th:text="${stage.district.name}"></option>
+                                    <option
+                                            th:each="district: ${districts}"
+                                            th:value="${district.id}"
+                                            th:text="${district.name}">
+                                    </option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save stage</button>
+                        </form>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </div>
+        <!-- end col -->
+    </div>
+</div>
+</body>
+</html>
